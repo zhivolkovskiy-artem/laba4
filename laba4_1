@@ -1,0 +1,54 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstring>
+#include <cstdio>
+#include <cctype>
+
+using namespace std;
+
+char ourArray[100], HEXwith[300], HEX[20] = "0x";
+bool buffer = false;
+int len, pos, sizepos, digits;
+
+char* convert(char* ourArray)
+{
+	pos = 0;
+	digits = 0;
+	len = strlen(ourArray);
+	for (int i = 0; i <= len; i++)
+	{
+		if (!isdigit(ourArray[i]))
+			if (!buffer)
+				HEXwith[pos++] = ourArray[i];
+			else
+			{
+				sizepos = 2;
+				while (digits)
+				{
+					if (digits % 16 < 10)
+						HEX[sizepos++] = digits % 16 + '0';
+					else
+						HEX[sizepos++] = digits % 16 - 10 + 'A';
+					digits = (digits - (digits % 16)) / 16;
+				} 
+				for (int i = 2; i < (sizepos + 2) / 2; i++)
+					swap(HEX[i], HEX[sizepos + 1 - i]);
+				strcat(HEXwith, HEX);
+				pos = pos + strlen(HEX);
+				HEXwith[pos++] = ourArray[i];
+				buffer = false;
+			}
+		else
+		{
+			digits = digits * 10 + ourArray[i] - '0';
+			buffer = true;
+		}
+	}
+	return HEXwith;
+}
+
+int main()
+{
+	cout << convert("awer258eqwq259");
+	return 0;
+}
