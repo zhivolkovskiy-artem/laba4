@@ -1,10 +1,9 @@
 #include <iostream>
-#include <math.h>
 #define MAXSIZE 100
 
 using namespace std;
 
-int caluclator(char *str)
+int calculator(char *str)
 {
 	int size = strlen(str), sum = 0, i = 0;
 	while (i < size)
@@ -30,5 +29,6 @@ int caluclator(char *str)
 
 int main()
 {
+	
 	return 0;
 }

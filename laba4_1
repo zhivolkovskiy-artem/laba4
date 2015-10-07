@@ -49,8 +49,17 @@ char* convert(char* ourArray)
 	return HEXwith;
 }
 
+void assert(char* str, char* testAnswer)
+{
+	bool test = false;
+	if (strcmp(convert(str), testAnswer) == 0) test = true;
+	if (test == true) cout << "OK" << endl;
+	else cout << "FAIL" << endl;
+}
+
 int main()
 {
-	cout << convert("awer2eqwq30");
-	return 0;
+	assert("256love33nyan", "0x100love0x21nyan");
+	assert("big9small160haha29", "big0x9small0xA0haha0x1D");
+	assert("privet130kak10dela1001", "privet0x82kak0xAdela0x3E9");
 }
