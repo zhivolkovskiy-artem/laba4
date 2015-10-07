@@ -33,6 +33,8 @@ char* convert(char* ourArray)
 				} 
 				for (int i = 2; i < (sizepos + 2) / 2; i++)
 					swap(HEX[i], HEX[sizepos + 1 - i]);
+				HEX[sizepos] = '\0';
+				HEXwith[pos] = '\0';
 				strcat(HEXwith, HEX);
 				pos = pos + strlen(HEX);
 				HEXwith[pos++] = ourArray[i];
@@ -49,6 +51,6 @@ char* convert(char* ourArray)
 
 int main()
 {
-	cout << convert("awer258eqwq259");
+	cout << convert("awer2eqwq30");
 	return 0;
 }
